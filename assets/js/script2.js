@@ -26,31 +26,31 @@ var parks = [
   },
   {
     parkName: 'Glacier',
-    parkCode:'GLAC'
+    parkCode: 'GLAC'
   },
   {
-    parkName:'Yosemite',
-    parkCode:'YOSE'
+    parkName: 'Yosemite',
+    parkCode: 'YOSE'
   },
   {
-    parkName:'Sequoia',
-  parkCode:'SEKI'
+    parkName: 'Sequoia',
+    parkCode: 'SEKI'
   },
 
   {
-    parkName:'Redwood',
-    parkCode:'REDW'
+    parkName: 'Redwood',
+    parkCode: 'REDW'
 
   },
-{
-  parkName: 'Everglade',
-  parkcode: 'EVER'
-},
+  {
+    parkName: 'Everglade',
+    parkcode: 'EVER'
+  },
 
-{
-  parkName: 'Denali',
-  parkCode: 'DENA'
-},
+  {
+    parkName: 'Denali',
+    parkCode: 'DENA'
+  },
 
 ]
 // var selectEl;
@@ -66,7 +66,7 @@ var park;
 var city;
 
 function displayChosenPark() {
-  
+
   // var parkCode = 'ACAD';
 
   var parkApiURL = `https://developer.nps.gov/api/v1/parks?parkCode=${park}&api_key=${parkApiKey}`;
@@ -75,67 +75,85 @@ function displayChosenPark() {
     .then(function (response) {
       return response.json();
     })
-      .then(function (data) {
-        console.log(data)
+    .then(function (data) {
+      console.log(data)
 
-        // var activities = response.activities;
-        $("#park-info").empty();
+      // var activities = response.activities;
+      $("#park-info").empty();
 
-        var featureCard = $("<div>");
+      var featureCard = $("<div>");
 
-        var description = data.data[0].description;
-        console.log(description);
-        
-
-        var streetName = data.data[0].addresses[0].line1;
-        var city = data.data[0].addresses[0].city;
-        var zip = data.data[0].addresses[0].postalCode;
-        var state = data.data[0].addresses[0].stateCode;
-        console.log(streetName + ' ' + city + ' ,' + zip + ' ,' + state);
-        
+      var description = data.data[0].description;
+      console.log(description);
 
 
-        var directions = data.data[0].directionsInfo;
-        console.log(directions);
-        
+      var streetName = data.data[0].addresses[0].line1;
+      var city = data.data[0].addresses[0].city;
+      var zip = data.data[0].addresses[0].postalCode;
+      var state = data.data[0].addresses[0].stateCode;
+      console.log(streetName + ' ' + city + ' ,' + zip + ' ,' + state);
 
-        // var activities = data.data[0].activities[0].name;
-        // console.log(activities);
 
-        var hours = data.data[0].operatingHours[0].standardHours;
-        console.log(hours);
 
-        featureCard.append("<br/>" + description);
-        featureCard.append("<br/>" + streetName + ' ' + city + ' ,' + zip + ' ,' + state);
-        featureCard.append("<br/>" + directions);
-        featureCard.append("<br/>" + hours);
+      var directions = data.data[0].directionsInfo;
+      console.log(directions);
 
-        $("#park-info").append(featureCard);
+      var directionsUrl = data.data[0].directionsUrl;
+      console.log(directionsUrl);
 
-        var images = data.data[0].images;
-        console.log(images);
-        var imagesLength = images.length;
 
-        for (var i = 0; i < images.length; i++) {
-          var slideContainer = $('<div class="mySlides fade">')
+      // var activities = data.data[0].activities[0].name;
+      // console.log(activities);
 
-          var numberDiv = $('<div class="numbertext">').text(`${i + 1}/${imagesLength}`) // give this an actual # in the area (i + 1/images.length)
-          slideContainer.append(numberDiv);
+      var hours = data.data[0].operatingHours[0].standardHours;
+      console.log(hours);
 
-          var img = $('<img src')  // how to source the images from the data?
-          slideContainer.append(img);
+      featureCard.append("<br/>" + 'Park Description' + '<br/>' + description + "<br/>");
+      featureCard.append("<br/>" + 'Park Address' + '<br/>' + streetName + ' ' + city + ' ,' + zip + ' ,' + state + "<br/>");
+      featureCard.append("<br/>" + 'Park Direction' + '<br/>' + directions + "<br/>");
+      featureCard.append("<br/>" + 'Park Direction URL' + '<br/>' + directionsUrl + "<br/>");
 
-          var capName = data.data[0].images.name;
-          var textDiv = $('<div class="text">').text(`${capName}`);
-          slideContainer.append(textDiv);
 
-          $('slideshowContainer').append(slideContainer);
+      featureCard.append("<br/>" + 'Park Hours' + '<br/>'
+        + "Sunday: " + hours.sunday + "<br/>"
+        + "Monday: " + hours.monday + "<br/>"
+        + "Tuesday: " + hours.tuesday + "<br/>"
+        + "Wednesday: " + hours.wednesday + "<br/>"
+        + "Thursday: " + hours.thursday + "<br/>"
+        + "Friday: " + hours.friday + "<br/>"
+        + "Saturday: " + hours.saturday + "<br/>")
 
-          var dotSpan = $('<span class="dot" onclick="currentSlide[i = 1]">')
-          $('#dotContainer').append(dotSpan);
 
-        }
-        
+
+      $("#park-info").append(featureCard);
+
+      // var images = data.data[0].images;
+      // console.log(images);
+      // var imagesLength = images.length;
+      // console.log(images.length);
+
+      // for (var i = 0; i < images.length; i++) {
+      //   var slideContainer = $('<div class="mySlides fade">')
+
+      //   var numberDiv = $('<div class="numbertext">').text(`${i + 1}/${imagesLength}`);
+      //   slideContainer.append(numberDiv);
+
+      //   var imgSrc = data.data[0].images[i].url;
+      //   var img = $('<img>').src(`${imgSrc}`);
+      //   // var img = $('<img src="data.data[0].images[i]">')  // how to source the images from the data?
+      //   slideContainer.append(img);
+
+      //   var capName = data.data[0].images[i].name;
+      //   var textDiv = $('<div class="text">').text(`${capName}`);
+      //   slideContainer.append(textDiv);
+
+      //   $('.slideshow-container').append(slideContainer);
+
+        // var dotSpan = $('<span class="dot" onclick="currentSlide[i + 1]">')
+        // $('#dotContainer').append(dotSpan);
+
+      // }
+
 
     });
 
@@ -144,9 +162,9 @@ function displayChosenPark() {
 // getParkApi();
 
 function displayChosenCity() {
-  
-var units = "imperial";
-var lang = 'en';
+
+  var units = "imperial";
+  var lang = 'en';
 
   var weatherApiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${weatherApiKey}&units=${units}&lang=${lang}`;
 
@@ -154,18 +172,18 @@ var lang = 'en';
     .then(function (response) {
       return response.json();
     })
-      .then(function (data) {
-        console.log(data)
+    .then(function (data) {
+      console.log(data)
 
-        $("#weather").empty();
-        
-        var featureCard = $("<div>");
+      $("#weather").empty();
+
+      var featureCard = $("<div>");
 
       var temperature = data.list[0].main.temp
       // var tempToF = ((temperature - 273.15) * 9/5 + 32).toFixed();
-      
 
-      console.log((temperature - 273.15) * 9/5 + 32);
+
+      console.log((temperature - 273.15) * 9 / 5 + 32);
 
       var windSpeed = data.list[0].wind.speed;
 
@@ -182,11 +200,11 @@ var lang = 'en';
       $("#weather").append(featureCard);
 
 
-});
+    });
 
 }
 
-$("#acadia").on("click", function (event) {
+$("#acad").on("click", function (event) {
   event.preventDefault();
   console.log("button is working");
 
@@ -200,63 +218,13 @@ $("#acadia").on("click", function (event) {
   let p = document.createElement("p")
   div.append("Some text", p)
 
-console.log(div.childNodes) // NodeList [ #text "Some text", <p>
+  console.log(div.childNodes) // NodeList [ #text "Some text", <p>
   // cities.push(cityName);
 
   // renderCards();
 });
 
-$("#yellow").on("click", function (event) {
-  event.preventDefault();
-  console.log("button is working");
-
-  park = "YELL";
-  city = "Gardiner, Montana";
-
-  displayChosenPark();
-  displayChosenCity();
-
-
-  // cities.push(cityName);
-
-  // renderCards();
-});
-
-$("#grand").on("click", function (event) {
-  event.preventDefault();
-  console.log("button is working");
-
-  park = "GLCA";
-  city = "Tusayan, Arizona";
-
-  displayChosenPark();
-  displayChosenCity();
-
-
-  // cities.push(cityName);
-
-  // renderCards();
-});
-
-$("#rockies").on("click", function (event) {
-  event.preventDefault();
-  console.log("button is working");
-
-  park = "ROMO";
-  city = "Denver, Colorado";
-
-  displayChosenPark();
-  displayChosenCity();
-
-
-  // cities.push(cityName);
-
-  // renderCards();
-});
-
-
-
-$("#arches").on("click", function (event) {
+$("#arch").on("click", function (event) {
   event.preventDefault();
   console.log("button is working");
 
@@ -272,13 +240,12 @@ $("#arches").on("click", function (event) {
   // renderCards();
 });
 
-
-$("#glacier").on("click", function (event) {
+$("#dena").on("click", function (event) {
   event.preventDefault();
   console.log("button is working");
 
-  park = "GLAC";
-  city = "Columbia Falls, Montana";
+  park = "DENA";
+  city = "Healy, Alaska";
 
   displayChosenPark();
   displayChosenCity();
@@ -289,55 +256,7 @@ $("#glacier").on("click", function (event) {
   // renderCards();
 });
 
-$("#yosemite").on("click", function (event) {
-  event.preventDefault();
-  console.log("button is working");
-
-  park = "YOSE";
-  city = "Mariposa, California";
-
-  displayChosenPark();
-  displayChosenCity();
-
-
-  // cities.push(cityName);
-
-  // renderCards();
-});
-
-$("#sequoia").on("click", function (event) {
-  event.preventDefault();
-  console.log("button is working");
-
-  park = "SEKI";
-  city = "Visalia,California";
-
-  displayChosenPark();
-  displayChosenCity();
-
-
-  // cities.push(cityName);
-
-  // renderCards();
-});
-
-$("#redwood").on("click", function (event) {
-  event.preventDefault();
-  console.log("button is working");
-
-  park = "REDW";
-  city = "Crescent City, California";
-
-  displayChosenPark();
-  displayChosenCity();
-
-
-  // cities.push(cityName);
-
-  // renderCards();
-});
-
-$("#everglades").on("click", function (event) {
+$("#ever").on("click", function (event) {
   event.preventDefault();
   console.log("button is working");
 
@@ -353,12 +272,12 @@ $("#everglades").on("click", function (event) {
   // renderCards();
 });
 
-$("#denali").on("click", function (event) {
+$("#glac").on("click", function (event) {
   event.preventDefault();
   console.log("button is working");
 
-  park = "DENA";
-  city = "Healy, Alaska";
+  park = "GLAC";
+  city = "Columbia Falls, Montana";
 
   displayChosenPark();
   displayChosenCity();
@@ -368,6 +287,109 @@ $("#denali").on("click", function (event) {
 
   // renderCards();
 });
+
+$("#glca").on("click", function (event) {
+  event.preventDefault();
+  console.log("button is working");
+
+  park = "GLCA";
+  city = "Tusayan, Arizona";
+
+  displayChosenPark();
+  displayChosenCity();
+
+
+  // cities.push(cityName);
+
+  // renderCards();
+});
+
+$("#redw").on("click", function (event) {
+  event.preventDefault();
+  console.log("button is working");
+
+  park = "REDW";
+  city = "Crescent City, California";
+
+  displayChosenPark();
+  displayChosenCity();
+
+
+  // cities.push(cityName);
+
+  // renderCards();
+});
+
+$("#romo").on("click", function (event) {
+  event.preventDefault();
+  console.log("button is working");
+
+  park = "ROMO";
+  city = "Denver, Colorado";
+
+  displayChosenPark();
+  displayChosenCity();
+
+
+  // cities.push(cityName);
+
+  // renderCards();
+});
+
+$("#seki").on("click", function (event) {
+  event.preventDefault();
+  console.log("button is working");
+
+  park = "SEKI";
+  city = "Visalia,California";
+
+  displayChosenPark();
+  displayChosenCity();
+
+
+  // cities.push(cityName);
+
+  // renderCards();
+});
+
+
+
+$("#yell").on("click", function (event) {
+  event.preventDefault();
+  console.log("button is working");
+
+  park = "YELL";
+  city = "Gardiner, Montana";
+
+  displayChosenPark();
+  displayChosenCity();
+
+
+  // cities.push(cityName);
+
+  // renderCards();
+});
+
+$("#yose").on("click", function (event) {
+  event.preventDefault();
+  console.log("button is working");
+
+  park = "YOSE";
+  city = "Mariposa, California";
+
+  displayChosenPark();
+  displayChosenCity();
+
+
+  // cities.push(cityName);
+
+  // renderCards();
+});
+
+
+
+
+
 
 
 // document.addEventListener('DOMContentLoaded', function() {
@@ -393,31 +415,19 @@ function showSlides(n) {
   let i;
   let slides = document.getElementsByClassName("mySlides");
   let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
 }
 
-// $(document).ready(function(){
-//   $('.dropdown-button2').dropdown({
-//       inDuration: 300,
-//       outDuration: 225,
-//       constrain_width: false, // Does not change width of dropdown to that of the activator
-//       hover: true, // Activate on hover
-//       gutter: ($('.dropdown-content').width()*3)/2.5 + 2, // Spacing from edge
-//       belowOrigin: false, // Displays dropdown below the button
-//       alignment: 'left' // Displays dropdown with edge aligned to the left of button
-//     }
-//   );
- 
-// });
+
 
 
 
@@ -464,6 +474,3 @@ function showSlides(n) {
 // grand canyon GLCA
 // rocky mountain ROMO
 
-// for (var i = 0; i < images.length; i++) {
-  
-// }

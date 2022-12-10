@@ -27,7 +27,7 @@
     </nav>
   </header>
   <!-- Slideshow container -->
-  <div id="slideshowContainer" class="slideshow-container">
+  <div class="slideshow-container">
 
     <!-- Full-width images with number and caption text -->
     <div class="mySlides fade">
@@ -43,33 +43,9 @@
     </div>
 
     <div class="mySlides fade">
-      <div class="numbertext">11 / 11</div>
-      <img src="./assets/images/dena-1.jpg">
-      <div class="text">DENALI</div>
-    </div>
-
-    <div class="mySlides fade">
-      <div class="numbertext">10 / 11</div>
-      <img src="./assets/images/ever-1.jpeg">
-      <div class="text">EVERGLADE</div>
-    </div>
-
-    <div class="mySlides fade">
-      <div class="numbertext">6 / 11</div>
-      <img src="./assets/images/glac-1.jpg">
-      <div class="text">GLACIER</div>
-    </div>
-
-    <div class="mySlides fade">
       <div class="numbertext">3 / 11</div>
       <img src="./assets/images/glca-1.jpg">
       <div class="text">GRAND CANYON</div>
-    </div>
-
-    <div class="mySlides fade">
-      <div class="numbertext">9 / 11</div>
-      <img src="./assets/images/redw-1.jpeg">
-      <div class="text">REDWOOD</div>
     </div>
 
     <div class="mySlides fade">
@@ -79,22 +55,46 @@
     </div>
 
     <div class="mySlides fade">
-      <div class="numbertext">8 / 11</div>
-      <img src="./assets/images/seki-1.jpeg">
-      <div class="text">SEQUIOA</div>
-    </div>
-
-    <div class="mySlides fade">
       <div class="numbertext">5 / 11</div>
       <img src="./assets/images/yell-1.jpg">
       <div class="text">YELLOWSTONE</div>
     </div>
 
     <div class="mySlides fade">
+      <div class="numbertext">6 / 11</div>
+      <img src="./assets/images/glac-1.jpg">
+      <div class="text">GLACIER</div>
+    </div>
+
+    <div class="mySlides fade">
       <div class="numbertext">7 / 11</div>
       <img src="./assets/images/yose-1.jpeg">
       <div class="text">YOSEMITE</div>
-    </div>    
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">8 / 11</div>
+      <img src="./assets/images/seki-1.jpeg">
+      <div class="text">SEQUIOA</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">9 / 11</div>
+      <img src="./assets/images/redw-1.jpeg">
+      <div class="text">REDWOOD</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">10 / 11</div>
+      <img src="./assets/images/ever-1.jpeg">
+      <div class="text">EVERGLADE</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">11 / 11</div>
+      <img src="./assets/images/dena-1.jpg">
+      <div class="text">DENALI</div>
+    </div>
 
     <!-- Next and previous buttons -->
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -103,7 +103,7 @@
   <br>
 
   <!-- The dots/circles -->
-  <div id="dotContainer" style="text-align:center">
+  <div style="text-align:center">
     <!-- <span class="dot" onclick="currentSlide(1)"></span>
     <span class="dot" onclick="currentSlide(2)"></span>
     <span class="dot" onclick="currentSlide(3)"></span>
@@ -120,21 +120,21 @@
 
   <div class="row">
     <div class="col s4">
-      <a id="parksDropdown" class='dropdown-trigger btn' href='#' data-target='dropdown1'>National Parks</a>
+      <a id="parksDropdown" class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
 
       <!-- Dropdown Structure -->
       <ul id='dropdown1' class='dropdown-content'>
-        <li id="acadia"><a>Acadia</a></li>
-        <li id="arches"><a>Arches</a></li>
-        <li id="grand"><a>Grand Canyon</a></li>
-        <li id="rockies"><a>Rocky Mountain</a></li>
-        <li id="yellow"><a>Yellstone</a></li>
-        <li id="glac"><a>Glacier</a></li>
-        <li id="yose"><a>Yosemite</a></li>
-        <li id="seki"><a>Sequioa</a></li>
-        <li id="redw"><a>Redwood</a></li>
-        <li id="ever"><a>Everglade</a></li>
+        <li id="acad"><a>Acadia</a></li>
+        <li id="arch"><a>Arches</a></li>
         <li id="dena"><a>Denali</a></li>
+        <li id="ever"><a>Everglade</a></li>
+        <li id="glac"><a>Glacier</a></li>
+        <li id="glca"><a>Grand Canyon</a></li>
+        <li id="romo"><a>Rocky Mountain</a></li>
+        <li id="redw"><a>Redwood</a></li>
+        <li id="seki"><a>Sequioa</a></li>
+        <li id="yell"><a>Yellstone</a></li>
+        <li id="yose"><a>Yosemite</a></li>
 
         <li class="divider"></li>
         <li>
@@ -142,13 +142,13 @@
         </li>
       </ul>
       <ul id='dropdown2' class='dropdown-content'>
-        <li><a href="#!">one</a></li>
-        <li><a href="#!">two</a></li>
+          <li><a href="#!">one</a></li>
+          <li><a href="#!">two</a></li>
       </ul>
         
         <!-- <li id="glac"><a href="#!"><i class="material-icons">view_module</i>four</a></li>
         <li id="yose"><a href="#!"><i class="material-icons">cloud</i>five</a></li> -->
-      </ul>
+      <!-- </ul> -->
     </div>
 
     <!-- <a class='dropdown-button btn' href='#' data-activates='dropdown1' data-beloworigin="true">Drop Me!</a>
@@ -175,7 +175,7 @@
   <div class="row">
     <div class="container col s4">
       <div id="search-history"></div>
-      <p>Hello</p>
+      <!-- add search history -->
     </div>
 
 
@@ -265,6 +265,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
-  <script src="./assets/js/scriptMain.js"></script>
+  <script src="./assets/js/script.js"></script>
 
 </html>
