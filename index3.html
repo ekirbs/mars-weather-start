@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="Description" content="A National Park traveller's guide for the Northeast USA region."/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" href="./assets/css/style3.css"/>
+
+    <title>National Park Traveller's Guide</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <!-- <header class="text-center" >
+      <h1>National Park Traveller's Guide</h1>
+      <p class="lead">A National Park traveller's guide for the Northeast USA region.</p>
+      <p id="currentDay" class="lead"></p> -->
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">National Park Traveller's Guide!</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#park-info">National Parks</a></li>
+            <li><a href="#weather">Weather at Parks</a></li>
+            <li><a href="#news">Recent Park News</a></li>
+          </ul>
+        </div>
+      </nav>
+    <!-- </header> -->
+<!-- 
+    <br />
+    <br /> -->
+
+    <!-- BACKGROUND IMAGE -->
+    <figure>
+      <!-- Slideshow container -->
+      <div class="slideshow-container">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 11</div>
+          <img src="./assets/images/acad-2.jpeg">
+          <div class="text">ACADIA</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 11</div>
+          <img src="./assets/images/arches-1.jpeg">
+          <div class="text">ARCHES</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 11</div>
+          <img src="./assets/images/glca-1.jpg">
+          <div class="text">GRAND CANYON</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">4 / 11</div>
+          <img src="./assets/images/romo-1.jpeg">
+          <div class="text">ROCKY MOUNTAIN</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">5 / 11</div>
+          <img src="./assets/images/yell-1.jpg">
+          <div class="text">YELLOWSTONE</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">6 / 11</div>
+          <img src="./assets/images/glac-1.jpg">
+          <div class="text">GLACIER</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">7 / 11</div>
+          <img src="./assets/images/yose-1.jpeg">
+          <div class="text">YOSEMITE</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">8 / 11</div>
+          <img src="./assets/images/seki-1.jpeg">
+          <div class="text">SEQUIOA</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">9 / 11</div>
+          <img src="./assets/images/redw-1.jpeg">
+          <div class="text">REDWOOD</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">10 / 11</div>
+          <img src="./assets/images/ever-1.jpeg">
+          <div class="text">EVERGLADE</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">11 / 11</div>
+          <img src="./assets/images/dena-1.jpg">
+          <div class="text">DENALI</div>
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <br>
+
+      <!-- The dots/circles -->
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide[1]"></span>
+        <span class="dot" onclick="currentSlide[2]"></span>
+        <span class="dot" onclick="currentSlide[3]"></span>
+        <span class="dot" onclick="currentSlide[4]"></span>
+        <span class="dot" onclick="currentSlide[5]"></span>
+        <span class="dot" onclick="currentSlide[6]"></span>
+        <span class="dot" onclick="currentSlide[7]"></span>
+        <span class="dot" onclick="currentSlide[8]"></span>
+        <span class="dot" onclick="currentSlide[9]"></span>
+        <span class="dot" onclick="currentSlide[10]"></span>
+        <span class="dot" onclick="currentSlide[11]"></span>
+      </div>
+
+    </figure>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- SEARCH SECTION -->
+      <section id="city-search" class="section-label">
+        <a id="parksDropdown" class='dropdown-trigger btn' href='#' data-target='dropdown1'>Choose a Park</a>
+
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content'>
+          <li id="acad" class="dropdown-btn" ><a>Acadia</a></li>
+          <li id="arch" class="dropdown-btn"><a>Arches</a></li>
+          <li id="dena" class="dropdown-btn"><a>Denali</a></li>
+          <li id="ever" class="dropdown-btn"><a>Everglade</a></li>
+          <li id="glac" class="dropdown-btn"><a>Glacier</a></li>
+          <li id="glca" class="dropdown-btn"><a>Grand Canyon</a></li>
+          <li id="romo" class="dropdown-btn"><a>Rocky Mountain</a></li>
+          <li id="redw" class="dropdown-btn"><a>Redwood</a></li>
+          <li id="seki" class="dropdown-btn"><a>Sequioa</a></li>
+          <li id="yell" class="dropdown-btn"><a>Yellstone</a></li>
+          <li id="yose" class="dropdown-btn"><a>Yosemite</a></li>
+
+          <li class="divider"></li>
+          <li>
+            <a class='dropdown-button2' href='#' data-activates='dropdown2'>New Jersey</a>
+          </li>
+        </ul>
+        <ul id='dropdown2' class='dropdown-content'>
+          <li id="acad" class="dropdown-btn" ><a>Acadia</a></li>
+          <li id="arch" class="dropdown-btn"><a>Arches</a></li>
+        </ul>
+        
+          <!-- <li id="glac"><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+          <li id="yose"><a href="#!"><i class="material-icons">cloud</i>five</a></li> -->
+
+        <!-- <a id="parksDropdown" class='dropdown-trigger btn' href='#' data-activates='dropdownMain' data-beloworigin="true">Choose a Park!</a>
+        <ul id='dropdownMain' class='dropdown-content'>
+          <li id="drop1" ><a class='dropdown-button2 d' href='#'  data-hover="hover" data-alignment="left">Connecticut</a></li>
+          <li id="drop2" ><a class='dropdown-button2 d' href='#'  data-hover="hover" data-alignment="left">Delaware</a></li>       
+          <li id="drop3" ><a class='dropdown-button2 d' href='#'  data-hover="hover" data-alignment="left">Maine</a></li>
+          <li id="drop4" ><a class='dropdown-button2 d' href='#'  data-hover="hover" data-alignment="left">Maryland</a></li>
+          <li id="drop5" ><a class='dropdown-button2 d' href='#'  data-hover="hover" data-alignment="left">Massachusetts</a></li>
+          <li id="drop6" ><a class='dropdown-button2 d' href='#'  data-hover="hover" data-alignment="left">New Hampshire</a></li>
+          <li id="drop7" ><a class='dropdown-button2 d' href='#'  data-hover="hover" data-alignment="left">New Jersey</a></li>
+          <li id="drop8" ><a class='dropdown-button2 d' href='#'  data-hover="hover" data-alignment="left">New York</a></li>
+          <li id="drop9" ><a class='dropdown-button2 d' href='#'  data-hover="hover" data-alignment="left">Pennsylvania</a></li>
+          <li id="drop10" ><a class='dropdown-button2 d' href='#'  data-hover="hover" data-alignment="left">Rhode Island</a></li>
+          <li id="drop11" ><a class='dropdown-button2 d' href='#'  data-hover="hover" data-alignment="left">Vermont</a></li>
+        </ul>
+        <ul id="drop1" class='dropdown-content'>
+          <li><a href="#!">Coltsville</a></li>
+          <li><a href="#!">Weir Farm</a></li>
+        </ul>
+        <ul id="drop2" class='dropdown-content'>
+          <li><a href="#!">First State</a></li>
+        </ul>
+        <ul id="drop3" class='dropdown-content'>
+          <li id="acad" class="dropdown-btn"><a>Acadia</a></li>
+          <li><a href="#!">Katahdin Woods and Waters</a></li>
+          <li><a href="#!">Saint Croix Island</a></li>
+        </ul>
+        <ul id="drop4" class='dropdown-content'>
+          <li><a href="#!">Fort McHenry</a></li>
+          <li><a href="#!">Hampton</a></li>
+          <li><a href="#!">Harriet Tubman</a></li>
+          <li><a href="#!">Harriet Tubman Underground Railroad</a></li>
+          <li><a href="#!">Thomas Stone</a></li>
+        </ul>
+        <ul id="drop5" class='dropdown-content'>
+          <li><a href="#!">Adams</a></li>
+          <li><a href="#!">Boston</a></li>
+          <li><a href="#!">Boston African American</a></li>
+          <li><a href="#!">Boston Harbor Islands</a></li>
+          <li><a href="#!">Cape Cod</a></li>
+          <li><a href="#!">Fredrick Law Olmsted</a></li>
+          <li><a href="#!">John Fitzgerald Kennedy</a></li>
+          <li><a href="#!">Longfellow House Washington's Headquarters</a></li>
+          <li><a href="#!">Lowell</a></li>
+          <li><a href="#!">Minute Man</a></li>
+          <li><a href="#!">New Bedford Whaling</a></li>
+          <li><a href="#!">Salem Maritime</a></li>
+          <li><a href="#!">Saugus Iron Works</a></li>
+          <li><a href="#!">Springfield Armory</a></li>
+        </ul>
+        <ul id="drop6" class='dropdown-content'>
+          <li><a href="#!">Saint Gaudens</a></li>
+        </ul>
+        <ul id="drop7" class='dropdown-content'>
+          <li><a href="#!">Delaware Water Gap</a></li>
+          <li><a href="#!">Gateway</a></li>
+          <li><a href="#!">Great Egg Harbor</a></li>
+          <li><a href="#!">Morristown</a></li>
+          <li><a href="#!">Paterson Great Falls</a></li>
+          <li><a href="#!">Statue of Liberty and Ellis Island</a></li>
+          <li><a href="#!">Thomas Edison</a></li>
+        </ul>
+        <ul id="drop8" class='dropdown-content'>
+          <li><a href="#!">African Burial Ground</a></li>
+          <li><a href="#!">Castle Clinton</a></li>
+          <li><a href="#!">Eleanor Roosevelt</a></li>
+          <li><a href="#!">Federal Hall</a></li>
+          <li><a href="#!">Fire Island</a></li>
+          <li><a href="#!">Fort Stanwix</a></li>
+          <li><a href="#!">General Grant</a></li>
+          <li><a href="#!">Governors Island</a></li>
+          <li><a href="#!">Hamilton Grange</a></li>
+          <li><a href="#!">Home of Franklin D. Roosevelt</a></li>
+          <li><a href="#!">Martin Van Buren</a></li>
+          <li><a href="#!">Sagamore Hill</a></li>
+          <li><a href="#!">Saint Paul's Church</a></li>
+          <li><a href="#!">Saratoga</a></li>
+          <li><a href="#!">Stonewall</a></li>
+          <li><a href="#!">Theodore Roosevelt Birthplace</a></li>
+          <li><a href="#!">Vanderbilt Mansion</a></li>
+          <li><a href="#!">Women's Rights</a></li>
+        </ul>
+        <ul id="drop9" class='dropdown-content'>
+          <li><a href="#!">Allegheny Portage Railroad</a></li>
+          <li><a href="#!">Appalachian</a></li>
+          <li><a href="#!">Edgar Allan Poe</a></li>
+          <li><a href="#!">Eisenhower</a></li>
+          <li><a href="#!">Flight 93</a></li>
+          <li><a href="#!">Fort Necessity</a></li>
+          <li><a href="#!">Friendship Hill</a></li>
+          <li><a href="#!">Gettysburg</a></li>
+          <li><a href="#!">Hopewell Furnace</a></li>
+          <li><a href="#!">Independence</a></li>
+          <li><a href="#!">Johnstown Flood</a></li>
+          <li><a href="#!">Steamtown</a></li>
+          <li><a href="#!">Thaddeus Kosciuszko</a></li>
+          <li><a href="#!">Upper Delaware</a></li>
+          <li><a href="#!">Valley Forge</a></li>
+        </ul>
+        <ul id="drop10" class='dropdown-content'>
+          <li><a href="#!">Blackstone River Valley</a></li>
+          <li><a href="#!">Roger Williams</a></li>
+        </ul>
+        <ul id="drop11" class='dropdown-content'>
+          <li><a href="#!">Marsh Billings Rockefeller</a></li>
+        </ul> -->
+
+      </section>
+
+      <!-- CURRENT WEATHER SECTION -->
+      <section id="feature-weather" class="feature-section">
+        <div class="container col s8">
+          <div id="park-info"></div>
+        </div>
+      </section>
+
+      <!-- HISTORY SECTION -->
+      <section id="history-section" class="section-label">
+        <h2>Search History</h2>
+        <div class="container col s4">
+          <div id="search-history"></div>
+          <!-- add search history -->
+        </div>
+      </section>
+
+      <!-- DAILY SECTION -->
+      <section id="daily-weather" class="daily-section">
+        <div class="container col s8">
+          <div id="weather"></div>
+        </div>
+      </section>
+       
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js" integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+    <script src="./assets/js/script3.js"></script>
+    
+  </body>
+</html>

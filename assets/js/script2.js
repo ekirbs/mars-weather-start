@@ -2,7 +2,6 @@ var parkApiKey = 'amkrsfXuAU5bolqQY0bTMOV4h2mBIOTqrRvrJVsd';
 
 var weatherApiKey = "3044316f6126db93462603440b6cd43c";
 
-
 var parks = [
   {
     parkName: 'Yellowstone',
@@ -53,14 +52,6 @@ var parks = [
   },
 
 ]
-// var selectEl;
-// for(var i = 0; i<parks.length; i++) {
-//   var optionEl = document.createElement('option');
-//   var optionId = parks[i].parkCode;
-//   optionEl.setAttribute('id', optionId);
-//   optionEl.textContent = parks[i].parkName;
-//   selectEl.appendChild(optionEl);
-// }
 
 var park;
 var city;
@@ -128,18 +119,20 @@ function displayChosenPark() {
       $("#park-info").append(featureCard);
 
       // var images = data.data[0].images;
-      // console.log(images);
+
       // var imagesLength = images.length;
-      // console.log(images.length);
 
       // for (var i = 0; i < images.length; i++) {
+
       //   var slideContainer = $('<div class="mySlides fade">')
+      //   $('.slideshow-container').append(slideContainer);
 
       //   var numberDiv = $('<div class="numbertext">').text(`${i + 1}/${imagesLength}`);
       //   slideContainer.append(numberDiv);
 
       //   var imgSrc = data.data[0].images[i].url;
-      //   var img = $('<img>').src(`${imgSrc}`);
+      //   var img = $(`<img src="${imgSrc}" id="icon">`)
+      //   // var img = $('<img>').src(`${imgSrc}`);
       //   // var img = $('<img src="data.data[0].images[i]">')  // how to source the images from the data?
       //   slideContainer.append(img);
 
@@ -147,11 +140,9 @@ function displayChosenPark() {
       //   var textDiv = $('<div class="text">').text(`${capName}`);
       //   slideContainer.append(textDiv);
 
-      //   $('.slideshow-container').append(slideContainer);
 
-        // var dotSpan = $('<span class="dot" onclick="currentSlide[i + 1]">')
-        // $('#dotContainer').append(dotSpan);
-
+      //   var dotSpan = $('<span class="dot" onclick="currentSlide[i + 1]">')
+      //   $('#dotContainer').append(dotSpan);
       // }
 
 
@@ -431,17 +422,6 @@ function showSlides(n) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 // function getWeatherApi();
 
 
@@ -449,20 +429,6 @@ function showSlides(n) {
 //     var elems = document.querySelectorAll('.carousel');
 //     var instances = M.Carousel.init(elems, options);
 //   });
-
-// $(".search-btn").on("click", function (event) {
-//   event.preventDefault();
-//   console.log("button is working");
-
-//   var cityName = $("#search-input").val().trim();
-
-//   displayChosenCity();
-//   displayChosenPark();
-
-//   // cities.push(cityName);
-
-//   // renderCards();
-// });
 
 // $(document).on('click', '#search-btn #search-history', displayChosenCity);
 // $(document).on("click", ".search-btn", displayChosenCity);
@@ -474,3 +440,78 @@ function showSlides(n) {
 // grand canyon GLCA
 // rocky mountain ROMO
 
+// GET LOCALSTORAGE OF SEARCH HISTORY FUNCTION
+function getLocalStorage() {
+  return JSON.parse(localStorage.getItem("parks")) || [];
+};
+
+// RENDER SEARCH HISTORY FUNCTION
+function renderHistory() {
+      
+  $('#park-info').empty();
+
+  $('#search-history').empty();
+
+  $('#weather').empty();
+
+  var parks = JSON.parse(localStorage.getItem('parks')) || [];    
+    
+  for (i = 0; i < parks.length; i++) {
+      
+    var histButton = $('<button class="hist-btn btn btn-outline-dark">');
+      
+    histButton.addClass('btn hist-btn');
+      
+    histButton.attr('data-name', parks[i]);
+      
+    histButton.text(parks[i]);
+      
+    $('#seach-history').append(histButton);
+      
+  }
+};
+
+// ON BUTTON CLICK, ADD SEARCHED CITIES TO HISTORY AND RENDER HISTORY & WEATHER
+$('.dropdown-btn').on('click', function (event) {
+          
+  event.preventDefault();
+        
+  var parks = getLocalStorage();
+  
+  console.log(parks);
+ 
+  var chosenPark = getElementsByClassName('dropdown-btn').id;
+  console.log(chosenPark);
+  // var chosenPark = $("#search-input").val().trim();
+  // console.log(cityName);
+  
+  if (cities.includes(cityName)) {
+    console.log("already chosen");
+  } else {
+    cities.push(cityName);
+    console.log(cities);
+    
+    if (cities.length > 5) {  
+      cities.sort();
+    };
+
+    localStorage.setItem("cities", JSON.stringify(cities));
+  };
+  
+  renderHistory();
+  displayChosenPark();
+  displayChosenCity();
+})
+
+// WEATHER DDISPLAY WHEN SEARCH HISTORY IS CLICKED
+$(document).on('click', '.hist-btn', displayChosenParkFromHistory);
+
+
+// var selectEl;
+// for(var i = 0; i<parks.length; i++) {
+//   var optionEl = document.createElement('option');
+//   var optionId = parks[i].parkCode;
+//   optionEl.setAttribute('id', optionId);
+//   optionEl.textContent = parks[i].parkName;
+//   selectEl.appendChild(optionEl);
+// }
