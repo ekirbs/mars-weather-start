@@ -70,8 +70,13 @@ init();
 // WEATHER DISPLAY FUNCTION
 function displayChosenPark() {
 
-  $("#park-info").empty();
-  $('#weather-spot').empty();
+  $('#park-name').empty();
+  $('#activity-card').empty();
+  $('#park-weather-card').empty();
+  $('#park-description-card').empty();
+  $('#park-directions-card').empty();
+  $('#contact-park').empty();
+  $('#park-hours-card').empty();
 
   var parkApiURL = `https://developer.nps.gov/api/v1/parks?parkCode=${park}&api_key=${parkApiKey}`;
 
@@ -82,7 +87,23 @@ function displayChosenPark() {
     .then(function (data) {
       console.log(data);
 
-      var featureCard = $("<div>");
+      // var featureCard = $("<div>");
+
+      var activities = data.data[0].activities;
+      console.log(activities)
+
+      var fullName = data.data[0].fullName;
+      $('#park-name').append(`<h2>${fullName}</h2>`);
+      var url = data.data[0].url;
+      console.log(url);
+      $('#park-name').append(`<a href="${url}">${url}</a>`)
+
+      for (var i = 0; i < activities.length; i++) {
+        $('#activity-card').append(data.data[0].activities[i].name)
+      }
+
+      var weatherReport = data.data[0].weatherInfo;
+      $('#park-weather-card').append(weatherReport);
 
       var description = data.data[0].description;
       console.log(description);
@@ -94,7 +115,7 @@ function displayChosenPark() {
       console.log(streetName + ' ' + city + ' ,' + zip + ' ,' + state);
 
       var directions = data.data[0].directionsInfo;
-      console.log(directions);
+      // console.log(directions);
 
       var directionsUrl = data.data[0].directionsUrl;
       console.log(directionsUrl);
@@ -105,12 +126,13 @@ function displayChosenPark() {
       var hours = data.data[0].operatingHours[0].standardHours;
       console.log(hours);
 
-      featureCard.append("<br/>" + 'Park Description' + '<br/>' + description + "<br/>");
-      featureCard.append("<br/>" + 'Park Address' + '<br/>' + streetName + ' ' + city + ' ,' + zip + ' ,' + state + "<br/>");
-      featureCard.append("<br/>" + 'Park Direction' + '<br/>' + directions + "<br/>");
-      featureCard.append("<br/>" + 'Park Direction URL' + '<br/>' + directionsUrl + "<br/>");
+      $('#park-description-card').append("<br/>" + 'Park Description' + '<br/>' + description + "<br/>");
+      $('#park-directions-card').append("<br/>" + 'Park Address' + '<br/>' + streetName + ' ' + city + ' ,' + zip + ' ,' + state + "<br/>");
+      $('#park-directions-card').append("<br/>" + 'Park Direction' + '<br/>' + directions + "<br/>");
+      $('#contact-park').append("<br/>" + 'Park Direction URL' + '<br/>' + directionsUrl + "<br/>");
 
-      featureCard.append("<br/>" + 'Park Hours' + '<br/>'
+      
+      $('#park-hours-card').append("<br/>" + 'Park Hours' + '<br/>'
         + "Sunday: " + hours.sunday + "<br/>"
         + "Monday: " + hours.monday + "<br/>"
         + "Tuesday: " + hours.tuesday + "<br/>"
@@ -119,7 +141,7 @@ function displayChosenPark() {
         + "Friday: " + hours.friday + "<br/>"
         + "Saturday: " + hours.saturday + "<br/>")
 
-      $("#park-info").append(featureCard);
+      // $("#park-info").append(featureCard);
     })
 }
 
@@ -235,7 +257,7 @@ function displayChosenCity() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
 
       // $("#weather").empty();
 
@@ -294,38 +316,38 @@ function displayChosenCity() {
           
         var day = i * 8;
         var count = i;
-        console.log(day, count);
+        // console.log(day, count);
   
         var weatherArticle = $(`<div id="article${count}" class="card card-alt zoom">`);
-        console.log(weatherArticle);
+        // console.log(weatherArticle);
         $('#weather').append(weatherArticle);
   
         var dateDisplay = $('<h3>').text((dayjs()).add(i + 1, 'day').format('M/D/YYYY'));
         $(`#article${count}`).append(dateDisplay);
-        console.log(dateDisplay);
+        // console.log(dateDisplay);
         
         var weatherImg = $(`<img src="http://openweathermap.org/img/w/${data.list[day + 1].weather[0].icon}.png" id="icon">`)
         $(`#article${count}`).append(weatherImg);
-        console.log(weatherImg);
+        // console.log(weatherImg);
   
         var weatherBody = $(`<div id="weatherBody${count}" class="card-body">`)
         $(`#article${count}`).append(weatherBody);
-        console.log(weatherBody);
+        // console.log(weatherBody);
           
         var temperature = data.list[day + 1].main.temp;          
         var tempDisplay = $('<p class="card-text">').text(`Temp: ${temperature}`);          
         $(`#weatherBody${count}`).append(tempDisplay);
-        console.log( temperature, tempDisplay);
+        // console.log( temperature, tempDisplay);
           
         var windSpeed = data.list[day + 1].wind.speed;          
         var windDisplay = $('<p class="card-text">').text(`Wind Speed: ${windSpeed}`);          
         $(`#weatherBody${count}`).append(windDisplay);
-        console.log (windSpeed, windDisplay);
+        // console.log (windSpeed, windDisplay);
           
         var humidity = data.list[day + 1].main.humidity;          
         var humidDisplay = $('<p class="card-text">').text(`Humidity: ${humidity}`);          
         $(`#weatherBody${count}`).append(humidDisplay);
-        console.log(humidity, humidDisplay);
+        // console.log(humidity, humidDisplay);
           
       }        
 
