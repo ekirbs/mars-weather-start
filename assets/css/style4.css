@@ -144,7 +144,7 @@ header img {
 .main-content {
   display: grid;
   grid-template-columns: 20% 80%;
-  grid-template-rows: 11% 22% 99% 33% 99% 33%;
+  grid-template-rows: 11% 22% 99% 33% 99% 22%;
   grid-gap: 1em;
   margin: 1em;
 }
